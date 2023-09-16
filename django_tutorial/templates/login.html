@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Login</h1>
+
+<form action="/login/" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name=" login password" placeholder="Password">
+    <input type="submit" value="Login">
+    {% for l in login %}
+
+<div class="mx-auto w-50 bg-success text-center text-white p-3 my-3 border border-warning rounded">
+    <h1>{{l.user_name}}</h1>
+    <h1>{{l.login_password}}</h1>
+</div>
+</div>
+</form>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block title %}
+PROFILE
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">USER PROFILE</h1>
+<hr>
+{% for u  in users %}
+
+<div class="mx-auto w-50 bg-success text-center text-black p-3 my-3 borderborder-warning rounded" >
+    <h1>Name:  {{u.user_name}}</h1>
+    <h1>Class: {{u.user_class}}</h1>
+    <h1>Dept:  {{u.dep_name}}</h1>
+</div>
+{% endfor %}
+{% endblock %}

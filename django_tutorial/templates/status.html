@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+
+{% block title %}
+STATUS
+{% endblock %}
+
+{% block content %}
+<h4> LEAVE STATUS PAGE</h4>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Status</title>
+    <style>
+        /* Add some basic styling for better presentation */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .leave-status {
+            border: 3px solid #ccc;
+            padding: 10px;
+            margin: 20px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="leave-status">
+        <h2>Leave Application Status</h2>
+        {% for s in status %}
+        <p><strong>Student ID:</strong> {{ s.student_id }}</p>
+        <p><strong>Faculty Status:</strong> {{ s.faculty_status }}</p>
+        <p><strong>HOD Status:</strong> {{ s.hod_status }}</p>
+        {% endfor %}
+
+</div>
+</body>
+</html>
+
+
+{% endblock %}
