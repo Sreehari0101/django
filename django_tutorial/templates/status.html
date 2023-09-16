@@ -1,41 +1,78 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block title %}
 STATUS
 {% endblock %}
 
 {% block content %}
-<h4> LEAVE STATUS PAGE</h4>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Leave Status</title>
-    <style>
-        /* Add some basic styling for better presentation */
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .leave-status {
-            border: 3px solid #ccc;
-            padding: 10px;
-            margin: 20px;
-            max-width: 400px;
-        }
-    </style>
-</head>
-<body>
+<style>
+    .table-container {
+        margin: 20px;
+    }
 
-    <div class="leave-status">
-        <h2>Leave Application Status</h2>
-        {% for s in status %}
-        <p><strong>Student ID:</strong> {{ s.student_id }}</p>
-        <p><strong>Faculty Status:</strong> {{ s.faculty_status }}</p>
-        <p><strong>HOD Status:</strong> {{ s.hod_status }}</p>
-        {% endfor %}
+    .table {
+        width: 80%; /* Adjust the width as needed */
+        margin: 0 auto; /* Center the table horizontally */
+        border-collapse: collapse;
+        padding: 10px; /* Add padding to the table */
+    }
 
+    .table th,
+    .table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+    }
+
+    .approved {
+        color: green;
+        font-weight: bold;
+    }
+
+    .rejected {
+        color: red;
+        font-weight: bold;
+    }
+
+    .not-processed {
+        color: gray;
+        font-weight: bold;
+    }
+   h2 {
+    text-align: center;
+   }
+
+</style>
+
+<div class="table-container">
+    <h2>Leave Application Status</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Approval Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in leave_requests %}
+            <tr>
+                <td>{{ request.std_id }}</td>
+                <td>
+                    {% if request.is_approved %}
+                        <span class="approved">Approved</span>
+                    {% elif request.is_rejected %}
+                        <span class="rejected">Rejected</span>
+                    {% else %}
+                        <span class="not-processed">Not Processed</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
-</body>
-</html>
-
-
 {% endblock %}

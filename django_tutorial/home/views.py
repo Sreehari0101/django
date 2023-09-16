@@ -44,7 +44,8 @@ def apply(request):
     return render(request,'apply.html',dict_form) 
 
 def status(request):
-     return render(request,'status.html')
+     leave_requests = Leave_request.objects.all()
+     return render(request, 'status.html', {'leave_requests': leave_requests})
 
 def departmentname(request):
     dict_dept={
